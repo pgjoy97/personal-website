@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proshanto Ghosh Joy - Cybersecurity Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Chakra Petch', sans-serif;
+            background-color: #05080a; 
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .glass-effect {
+            background: rgba(10, 20, 15, 0.7); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 100, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .glass-effect:hover {
+            transform: translateY(-5px);
+        }
+
+        /* New Gradient Border Effect */
+        .glass-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit; 
+            padding: 1px; 
+            background: linear-gradient(135deg, #16a34a, #22d3ee); 
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            z-index: -1;
+        }
+
+        .glass-effect:hover::before {
+            opacity: 1;
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 8px rgba(22, 163, 74, 0.7), 0 0 16px rgba(22, 163, 74, 0.5);
+        }
+        .section-title {
+            border-bottom: 2px solid #16a34a;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        /* Updated Typing Animation */
+        .typing-container {
+            display: inline-flex;
+            align-items: center;
+        }
+        .typing-effect {
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 2.5s steps(30, end);
+        }
+        .blinking-cursor {
+            font-weight: bold;
+            color: #16a34a;
+            animation: blink .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink {
+            from, to { opacity: 1 }
+            50% { opacity: 0 }
+        }
+        /* Scroll animations */
+        .scroll-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* New transitions for About Me section */
+        .about-image-container, .about-text-container {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .about-image-container {
+            transform: translateX(-50px);
+        }
+        .about-text-container {
+            transform: translateX(50px);
+        }
+        .scroll-section.visible .about-image-container,
+        .scroll-section.visible .about-text-container {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scroll-section.visible .about-text-container {
+            transition-delay: 0.2s; /* Stagger the animation */
+        }
+        /* Lightbox for certificates */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .lightbox-content {
+            max-width: 80vw;
+            max-height: 80vh;
+            border: 3px solid #16a34a;
+            border-radius: 8px;
+            cursor: default;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        /* Hero section glow */
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(22, 163, 74, 0.15) 0%, rgba(22, 163, 74, 0) 65%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Header & Navigation -->
+    <header class="glass-effect sticky top-0 z-50 mx-auto max-w-screen-xl mt-5 rounded-lg">
+        <div class="container mx-auto px-6 md:px-10 py-3 flex justify-between items-center">
+            <a href="#" class="transition-transform transform hover:scale-110 duration-300 text-green-400">
+                <!-- New Clearer Logo -->
+                <svg aria-label="Proshanto Ghosh Logo" class="w-16 h-16" viewBox="0 0 100 100">
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#22d3ee" />
+                            <stop offset="100%" stop-color="#16a34a" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M50 2 L95 25 L95 75 L50 98 L5 75 L5 25 Z" stroke="url(#logo-gradient)" stroke-width="4" fill="rgba(22, 163, 74, 0.1)"></path>
+                    <text x="50" y="60" text-anchor="middle" font-family="'Chakra Petch', sans-serif" font-size="50" font-weight="bold" fill="currentColor">PG</text>
+                </svg>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-slate-300 hover:text-green-400 transition-colors duration-300">About</a>
+                <a href="#experience" class="text-slate-300 hover:text-green-400 transition-colors duration-300">Experience</a>
+                <a href="#education" class="text-slate-300 hover:text-green-400 transition-colors duration-300">Education</a>
+                <a href="#skills" class="text-slate-300 hover:text-green-400 transition-colors duration-300">Skills</a>
+                <a href="#certifications" class="text-slate-300 hover:text-green-400 transition-colors duration-300">Certifications</a>
+                <a href="#projects" class="text-slate-300 hover:text-green-400 transition-colors duration-300">Projects</a>
+                <a href="#contact" class="text-slate-300 hover:text-green-400 transition-colors duration-300">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-slate-300 hover:text-green-400">About</a>
+            <a href="#experience" class="block py-2 text-slate-300 hover:text-green-400">Experience</a>
+            <a href="#education" class="block py-2 text-slate-300 hover:text-green-400">Education</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-green-400">Skills</a>
+            <a href="#certifications" class="block py-2 text-slate-300 hover:text-green-400">Certifications</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-green-400">Projects</a>
+            <a href="#contact" class="block py-2 text-slate-300 hover:text-green-400">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 sm:px-10 md:px-16 lg:px-24 py-8 relative z-10">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[80vh] flex flex-col justify-center py-16 md:py-24 relative">
+            <div class="max-w-4xl">
+                <div class="typing-container">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight typing-effect" id="hero-name">Proshanto Ghosh Joy</h1>
+                    <span class="text-4xl sm:text-5xl md:text-6xl font-extrabold blinking-cursor">!</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-green-400 mt-2">
+                    Cybersecurity Engineer
+                </h2>
+                <p class="mt-6 text-lg text-slate-400 max-w-2xl text-justify">
+                    To leverage my knowledge and experience in cybersecurity to design, implement, and manage secure IT infrastructures that protect organizations from evolving threats. I aim to contribute to a forward-thinking company where I can continue to grow technically and professionally, while playing a key role in strengthening digital defenses, ensuring data privacy, and promoting a culture of security awareness. Passionate about problem-solving, continuous learning, and collaborating with teams to build resilient and future-ready systems.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 glow-effect text-center">
+                        Get In Touch
+                    </a>
+                    <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 text-center">
+                        Download CV
+                    </a>
+                </div>
+                <div class="mt-10 flex space-x-6 items-center">
+                    <!-- Social Media Links -->
+                    <a href="https://www.linkedin.com/in/proshanto-ghosh-joy-249b17299?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="text-slate-400 hover:text-green-400"><i data-lucide="linkedin" class="w-7 h-7"></i></a>
+                    <a href="https://github.com/pgjoy97" target="_blank" class="text-slate-400 hover:text-green-400"><i data-lucide="github" class="w-7 h-7"></i></a>
+                    <a href="https://wa.me/8801772162548" target="_blank" class="text-slate-400 hover:text-green-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.001.004 1.73 2.995z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-16 md:py-24 scroll-section">
+            <h3 class="text-3xl font-bold mb-12 section-title">About Me</h3>
+            <div class="glass-effect rounded-lg p-8 md:p-12 overflow-hidden">
+                <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-center">
+                    <div class="md:col-span-1 flex justify-center about-image-container">
+                        <img src="joy.jpg" alt="Proshanto Ghosh Joy" class="rounded-full w-60 h-60 md:w-72 md:h-72 object-cover border-4 border-green-500 glow-effect">
+                    </div>
+                    <div class="md:col-span-2 text-slate-300 text-lg space-y-4 about-text-container">
+                        <p class="text-justify">
+                           Hi, I’m a passionate Cybersecurity Engineer currently working at Smart Technologies BD Ltd., with a degree in Computer Science and Engineering (CSE) from United International University (UIU). My career is centered around building secure digital environments, solving technical challenges, and staying ahead in the ever-evolving field of cybersecurity.
+                        </p>
+                        <p class="text-justify">
+                           But beyond the codes and firewalls, I’m someone who finds real joy in life’s little adventures. Traveling is my escape and my happiness—it allows me to explore new places, meet people from different walks of life, and learn through experience. To recharge, I often head to the mountains, where the peace of nature helps me reflect and refocus. When I’m not exploring landscapes or security systems, you’ll find me on a cricket field or a badminton court. This site is a reflection of who I am—both as a tech professional and as a curious soul constantly seeking new experiences.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 md:py-24 scroll-section">
+            <h3 class="text-3xl font-bold mb-12 section-title">Work Experience</h3>
+            <div class="space-y-8">
+                <!-- Experience Card 1 -->
+                <div class="glass-effect rounded-lg p-6 md:p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-xl font-bold text-white">Engineer - Enterprise Solutions Cybersecurity</h4>
+                            <p class="text-md text-green-400">Smart Technologies (BD) Ltd.</p>
+                        </div>
+                        <p class="text-sm text-slate-400 flex-shrink-0 ml-4">June 2024 - Present</p>
+                    </div>
+                    <ul class="mt-4 list-disc list-inside text-slate-400 space-y-2">
+                        <li>Specialize in deploying and managing advanced security solutions for enterprise clients, including hands-on implementation of Privileged Access Management (PAM) tools.</li>
+                        <li>Provide managed services for Grameenphone, overseeing their Data Loss Prevention (DLP) solution to protect sensitive information and ensure regulatory compliance.</li>
+                    </ul>
+                </div>
+                <!-- Experience Card 2 -->
+                <div class="glass-effect rounded-lg p-6 md:p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-xl font-bold text-white">Junior Network Engineer</h4>
+                            <p class="text-md text-green-400">Smart Technologies (BD) Ltd.</p>
+                        </div>
+                        <p class="text-sm text-slate-400 flex-shrink-0 ml-4">August 2023 - May 2024</p>
+                    </div>
+                    <ul class="mt-4 list-disc list-inside text-slate-400 space-y-2">
+                        <li>Configured and deployed routers and switches for over 45 branches in the Bangladesh Insurance Sector Development Project (BISDP).</li>
+                        <li>Managed and maintained network hardware and virtualization technologies, including the Huawei Fusion Suite.</li>
+                        <li>Provided technical support and documented network configurations to ensure operational integrity.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section id="education" class="py-16 md:py-24 scroll-section">
+            <h3 class="text-3xl font-bold mb-12 section-title">Education</h3>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="glass-effect p-6 rounded-lg">
+                    <i data-lucide="graduation-cap" class="w-12 h-12 text-green-400 mx-auto mb-4"></i>
+                    <h4 class="text-xl font-bold text-white">B.Sc. in CSE</h4>
+                    <p class="text-md text-green-400 mt-1">United International University, Dhaka</p>
+                    <p class="text-slate-400 mt-2">2023</p>
+                </div>
+                <div class="glass-effect p-6 rounded-lg">
+                    <i data-lucide="award" class="w-12 h-12 text-green-400 mx-auto mb-4"></i>
+                    <h4 class="text-xl font-bold text-white">HSC</h4>
+                    <p class="text-md text-green-400 mt-1">Agriculture University Collage, Mymensingh</p>
+                    <p class="text-slate-400 mt-2">2016</p>
+                </div>
+                <div class="glass-effect p-6 rounded-lg">
+                    <i data-lucide="award" class="w-12 h-12 text-green-400 mx-auto mb-4"></i>
+                    <h4 class="text-xl font-bold text-white">SSC</h4>
+                    <p class="text-md text-green-400 mt-1">Mymensingh Laboratory High School, Mymensingh</p>
+                    <p class="text-slate-400 mt-2">2014</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 md:py-24 scroll-section">
+            <h3 class="text-3xl font-bold mb-12 section-title">Technical Skills</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-effect p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold text-green-400 mb-4">Cybersecurity Tools & Platforms</h4>
+                    <p class="text-slate-400 text-sm mb-4">Hands-on experience with industry-leading tools for identity management, vulnerability scanning, and data protection.</p>
+                    <ul class="space-y-2 text-slate-300">
+                        <li>PAM: CyberArk, Delinea, BeyondTrust</li>
+                        <li>Vulnerability Management: Tenable</li>
+                        <li>Data Loss Prevention (DLP)</li>
+                        <li>Network Analysis: Wireshark</li>
+                    </ul>
+                </div>
+                <div class="glass-effect p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold text-green-400 mb-4">Networking & Protocols</h4>
+                    <p class="text-slate-400 text-sm mb-4">Deep understanding of network architecture, routing, and the foundational models that govern data communication.</p>
+                    <ul class="space-y-2 text-slate-300">
+                        <li>OSI Model & TCP/IP Suite</li>
+                        <li>Routing & Switching (Cisco, Huawei)</li>
+                        <li>Protocols (OSPF, EIGRP)</li>
+                        <li>Security (ACLs, VPNs)</li>
+                    </ul>
+                </div>
+                 <div class="glass-effect p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold text-green-400 mb-4">Systems & Scripting</h4>
+                    <p class="text-slate-400 text-sm mb-4">Proficient in administering diverse operating systems and developing scripts for automation and web development.</p>
+                    <ul class="space-y-2 text-slate-300">
+                        <li>OS: Linux, Windows Server</li>
+                        <li>Scripting: Bash, PowerShell</li>
+                        <li>Web: HTML, CSS, JavaScript</li>
+                        <li>Languages: Python, C, PHP</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-16 md:py-24 scroll-section">
+            <h3 class="text-3xl font-bold mb-12 section-title">Professional Certifications</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Certificate Card -->
+                <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="BT.jpg" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">BeyondTrust: Password Safe Administration</h4>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="BT2.jpg" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">BeyondTrust Certified Sales Professional</h4>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="https://placehold.co/1200x800/0a0a0a/16a34a?text=CyberArk+CPE-PAM" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">CyberArk Certified Pre-Sales Engineer (CPE-PAM)</h4>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="https://placehold.co/1200x800/0a0a0a/16a34a?text=CyberArk+CSP-PAM" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">CyberArk Certified Sales Professional (CSP-PAM)</h4>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="https://placehold.co/1200x800/0a0a0a/16a34a?text=CyberArk+Install+and+Configure" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">CyberArk (PAM) Install and Configure</h4>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="https://placehold.co/1200x800/0a0a0a/16a34a?text=CyberArk+PAM+Admin" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Privileged Access Management (PAM) Administration</h4>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="https://placehold.co/1200x800/0a0a0a/16a34a?text=Trellix+Data+Security" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Trellix Data Security | Technical Specialist</h4>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="https://placehold.co/1200x800/0a0a0a/16a34a?text=Quantum+Core" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">Quantum Core – Technical Specialist</h4>
+                    </div>
+                </div>
+                 <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="https://placehold.co/1200x800/0a0a0a/16a34a?text=NDG+Linux+Essentials" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">NDG Linux Essentials</h4>
+                    </div>
+                </div>
+                 <div class="glass-effect rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="https://placehold.co/1200x800/0a0a0a/16a34a?text=CCNA" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-white">CCNA</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 md:py-24 scroll-section">
+            <h3 class="text-3xl font-bold mb-12 section-title">Featured Projects</h3>
+            <div class="mb-12">
+                <h4 class="text-2xl font-semibold text-green-400 mb-6">Professional Projects</h4>
+                <p class="text-slate-400 mb-6 text-sm">All professional projects were completed under the banner of Smart Technologies BD Ltd.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-effect rounded-lg overflow-hidden group p-6">
+                        <h4 class="text-xl font-bold text-white">Delinea PAM at Sonali Bank PLC</h4>
+                        <p class="mt-2 text-slate-400">Led the deployment and configuration of the Delinea PAM solution to enhance security over privileged accounts.</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Delinea PAM</span>
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Enterprise Security</span>
+                        </div>
+                    </div>
+                    <div class="glass-effect rounded-lg overflow-hidden group p-6">
+                        <h4 class="text-xl font-bold text-white">Delinea PAM at Shimanto Bank</h4>
+                        <p class="mt-2 text-slate-400">Successfully deployed and configured the Delinea PAM solution to secure the bank's critical infrastructure.</p>
+                         <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Delinea PAM</span>
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Banking Security</span>
+                        </div>
+                    </div>
+                    <div class="glass-effect rounded-lg overflow-hidden group p-6">
+                        <h4 class="text-xl font-bold text-white">Bangladesh Insurance Sector Development Project (BISDP)</h4>
+                        <p class="mt-2 text-slate-400">Configured and deployed the branch-level network for 44 branches, including router/switch setup and IPsec VPN tunnels to the data center.</p>
+                         <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Network Configuration</span>
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">IPsec VPN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-2xl font-semibold text-green-400 mb-6">Academic Projects</h4>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-effect rounded-lg overflow-hidden group p-6">
+                        <h4 class="text-xl font-bold text-white">Ride Share</h4>
+                        <p class="mt-2 text-slate-400">Users can select rides between cities, and riders can post trip details. The platform includes live tracking and a rating system.</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">HTML/CSS</span>
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">JavaScript</span>
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">PHP</span>
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">MySQL</span>
+                        </div>
+                        <a href="https://github.com/pgjoy97/ride-share-app" target="_blank" class="text-green-400 mt-4 inline-block">View on GitHub &rarr;</a>
+                    </div>
+                    <div class="glass-effect rounded-lg overflow-hidden group p-6">
+                        <h4 class="text-xl font-bold text-white">Smart Home for Energy Consumption</h4>
+                        <p class="mt-2 text-slate-400">An IoT-based project that controls and automates electric gadgets to optimize electricity usage and reduce consumption.</p>
+                         <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Packet Tracer</span>
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">JavaScript</span>
+                            <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">PHP</span>
+                             <span class="bg-green-900 text-green-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">MySQL</span>
+                        </div>
+                        <a href="https://github.com/pgjoy97/FYDP-Smart-Home-Architecture-for-Smart-Energy-Consumption" target="_blank" class="text-green-400 mt-4 inline-block">View on GitHub &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 scroll-section">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="text-center md:text-left">
+                    <h3 class="text-3xl font-bold mb-4 section-title">Get In Touch</h3>
+                    <p class="max-w-md mx-auto md:mx-0 text-slate-400 mb-8 text-justify">
+                        I'm always open to discussing new opportunities, interesting projects, or just connecting with other professionals in the field. Feel free to reach out.
+                    </p>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <a href="mailto:proshanto.ghosh@smartbd.com" class="glass-effect p-6 rounded-lg flex items-center space-x-4 group hover:border-green-400 transition-all duration-300 border border-transparent">
+                        <i data-lucide="mail" class="w-8 h-8 text-green-400"></i>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Email</h4>
+                            <p class="text-slate-400 group-hover:text-green-400 transition-colors duration-300">proshanto.ghosh@smartbd.com</p>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/8801772162548" target="_blank" class="glass-effect p-6 rounded-lg flex items-center space-x-4 group hover:border-green-400 transition-all duration-300 border border-transparent">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.001.004 1.73 2.995z"/></svg>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">WhatsApp</h4>
+                            <p class="text-slate-400 group-hover:text-green-400 transition-colors duration-300">+880 1772-162548</p>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/proshanto-ghosh-joy-249b17299?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="glass-effect p-6 rounded-lg flex items-center space-x-4 group hover:border-green-400 transition-all duration-300 border border-transparent">
+                        <i data-lucide="linkedin" class="w-8 h-8 text-green-400"></i>
+                         <div>
+                            <h4 class="text-lg font-bold text-white">LinkedIn</h4>
+                            <p class="text-slate-400 group-hover:text-green-400 transition-colors duration-300">Connect on LinkedIn</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800">
+        <div class="container mx-auto px-6 py-6 text-center text-slate-500">
+            <p>&copy; 2024 Proshanto Ghosh Joy. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" onclick="event.stopPropagation()">
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileDropdownButton = document.getElementById('mobile-dropdown-button');
+        const mobileDropdownContent = document.getElementById('mobile-dropdown-content');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        if(mobileDropdownButton) {
+            mobileDropdownButton.addEventListener('click', () => {
+                mobileDropdownContent.classList.toggle('hidden');
+                mobileDropdownButton.querySelector('i').classList.toggle('rotate-180');
+            });
+        }
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('.scroll-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1 
+        });
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        function openLightbox(src) {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = src;
+        }
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
